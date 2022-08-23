@@ -35,7 +35,7 @@ const Activity: React.FC = () => {
       setStatus(response.status);
       setStatusText(response.statusText);
       setActivities(json)
-      console.log("activities", activities)
+      console.log("activities", json)
     } catch (error) {
       setError(error);
       console.log("error")

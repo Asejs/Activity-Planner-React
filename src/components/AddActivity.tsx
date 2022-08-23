@@ -20,8 +20,8 @@ export default function AddActivity() {
       (<Card sx={{ mb: '30px'}}>
         <CardHeader
           action={
-            <IconButton aria-label="settings" sx={{ '& svg': {fontSize: "40px"} }}>
-              <CloseIcon onClick={handleClick}/>
+            <IconButton aria-label="settings" sx={{ '& svg': {fontSize: "40px"} }} onClick={handleClick}>
+              <CloseIcon />
             </IconButton>
           }
           title="Legg til ny aktivitet"

@@ -50,8 +50,8 @@ export default function ActivityCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Aktivitetstittel"
-        subheader="Dato"
+        title="Activity title"
+        subheader="Date"
       />
       <CardMedia
         component="img"
