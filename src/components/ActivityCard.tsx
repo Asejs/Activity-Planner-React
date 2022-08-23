@@ -61,9 +61,18 @@ export default function ActivityCard() {
       />
       <CardContent>
         <Typography component={'span'} variant="body2" color="text.secondary">
-          <h4>Sted: ---</h4>
-          <h4>Deltakere: --</h4>
-          <h4>Beskrivelse</h4>
+
+        <h2>Activity location</h2>
+        <h2>Activity description</h2>
+          
+        {/* { activities.map((activity: Activity) => (
+          <>
+            <h2>Sted: { activity.location }</h2>
+            <h2>Deltakere: 0</h2>
+            <h2>Beskrivelse: { activity.description }</h2>
+          </>
+        ))} */}
+
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
