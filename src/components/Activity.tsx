@@ -1,10 +1,9 @@
 import ActivityCard from './ActivityCard'
 import { useEffect, useState } from 'react';
-
+import { baseURL } from '../config';
+import { ActivityItem } from '../api/activities.api.types';
 
 const Activity: React.FC = () => {
-
-  const baseURL = "http://127.0.0.1:5000/";
 
   const [status, setStatus] = useState<number>(0);
   const [statusText, setStatusText] = useState<string>('');
@@ -12,15 +11,7 @@ const Activity: React.FC = () => {
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
 
-  interface Activity {
-    username: string,
-    title: string,
-    date: string,
-    location: string,
-    description: string
-  }
-
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState<ActivityItem[]>([]);
 
   useEffect(() => {
     setLoading(true);
@@ -42,6 +33,8 @@ const Activity: React.FC = () => {
     }
     setLoading(false);
   }
+
+  activities.forEach((item) => item.)
 
   return (
     <>
