@@ -34,7 +34,7 @@ const Activity: React.FC = () => {
     setLoading(false);
   }
 
-  activities.forEach((item) => item.)
+  //activities.forEach((item) => item.)
 
   return (
     <>
