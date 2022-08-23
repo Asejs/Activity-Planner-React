@@ -1,17 +1,22 @@
-﻿import Activity from '../components/Activity';
+﻿import { useState } from 'react';
+import Activity from '../components/Activity';
 import AddActivity from '../components/AddActivity';
 
 
-const ActivitiesPage: React.FunctionComponent = () => {
-    const loggedIn = true;
 
+const ActivitiesPage = () => {
+    const [loggedIn, setLoggedIn] = useState<boolean>(true);
+    
     return (
         <>
             <h1>Utforsk aktiviteter</h1>
-            {loggedIn && <AddActivity />}
+            {loggedIn &&
+            <AddActivity />}
             <Activity />
         </>
-    )
+    );
 }
 
-export default ActivitiesPage
+
+
+export default ActivitiesPage;
