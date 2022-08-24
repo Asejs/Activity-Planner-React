@@ -15,10 +15,12 @@ import { getAllActivities } from '../api/activities.api';
 import { ActivityItem, ApiResponse } from '../api/activities.api.types';
 import { useEffect, useState } from 'react';
 
+interface ActivityCardProps {
+  activityItem: ActivityItem;
+}
 
-export default function ActivityCard() {
-
-
+export default function ActivityCard(props: ActivityCardProps) {
+  const { activityItem } = props;
   return (
     <Card sx={{ mb: '30px'}}>
       <CardHeader
@@ -42,14 +44,7 @@ export default function ActivityCard() {
       />
       <CardContent>
         <Typography component={'span'} variant="body2" color="text.secondary">
-                
-        {/* { activityList.map((activity: ActivityItem) => (
-          <>
-            { activity.username }
-          </>
-        ))} */}
-
-
+          {activityItem.title}
 
         {/* <h2>Sted: { activity.location }</h2>
         <h2>Deltakere: 0</h2>
