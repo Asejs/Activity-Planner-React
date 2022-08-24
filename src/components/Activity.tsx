@@ -7,7 +7,7 @@ import { useAllActivities } from '../hooks/useAllActivities';
 
 
 const Activity: React.FC = () => {
-  const allActivities = useAllActivities();
+  const allActivities = useAllActivities().data;
 
   //activities.forEach((item) => item.)
 
@@ -17,8 +17,11 @@ const Activity: React.FC = () => {
 
   return (
     <>
-      <ActivityCard />
-      <ActivityCard />
+      { allActivities.map((item) => {
+        return (
+          <ActivityCard />
+        )
+      }) }
     </>
   );
 }

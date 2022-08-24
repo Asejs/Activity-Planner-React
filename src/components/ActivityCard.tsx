@@ -11,17 +11,13 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import defaultimg from './default.png'
 import { Button } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { getAllActivities, useApi } from '../api/activities.api';
+import { getAllActivities } from '../api/activities.api';
 import { ActivityItem, ApiResponse } from '../api/activities.api.types';
 import { useEffect, useState } from 'react';
 
 
 export default function ActivityCard() {
-  const activityList = useApi<ActivityItem>("activities_get")
 
-  let data = activityList.data
-  console.log(data)
-  console.log(data[0])
 
   return (
     <Card sx={{ mb: '30px'}}>
