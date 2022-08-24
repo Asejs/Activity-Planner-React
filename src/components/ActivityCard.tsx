@@ -1,42 +1,27 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import defaultimg from './default.png'
 import { Button } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { getAllActivities, useApi } from '../api/activities.api';
+import { ActivityItem, ApiResponse } from '../api/activities.api.types';
+import { useEffect, useState } from 'react';
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
 
 export default function ActivityCard() {
-  const [expanded, setExpanded] = React.useState(false);
+  const activityList = useApi<ActivityItem>("activities_get")
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  let data = activityList.data
+  console.log(data)
+  console.log(data[0])
 
   return (
     <Card sx={{ mb: '30px'}}>
@@ -61,17 +46,21 @@ export default function ActivityCard() {
       />
       <CardContent>
         <Typography component={'span'} variant="body2" color="text.secondary">
-
-        <h2>Activity location</h2>
-        <h2>Activity description</h2>
-          
-        {/* { activities.map((activity: Activity) => (
+                
+        {/* { activityList.map((activity: ActivityItem) => (
           <>
-            <h2>Sted: { activity.location }</h2>
-            <h2>Deltakere: 0</h2>
-            <h2>Beskrivelse: { activity.description }</h2>
+            { activity.username }
           </>
         ))} */}
+
+
+
+        {/* <h2>Sted: { activity.location }</h2>
+        <h2>Deltakere: 0</h2>
+        <h2>Beskrivelse: { activity.description }</h2> */}
+
+        {/* { activities.forEach((item) => item.description) } */}
+
 
         </Typography>
       </CardContent>
@@ -80,22 +69,7 @@ export default function ActivityCard() {
         <IconButton aria-label="legg til favoritt">
           <FavoriteIcon />
         </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography component={'span'} paragraph>
-            Ekstra informasjon / Beskrivelse
-          </Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }
