@@ -1,7 +1,6 @@
 ﻿import { useState } from 'react';
-import Activity from '../components/Activity';
-import AddActivity from '../components/AddActivity';
-
+import Activity from '../../components/Activity';
+import AddActivity from '../../components/AddActivity';
 
 
 const ActivitiesPage = () => {

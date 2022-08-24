@@ -1,4 +1,4 @@
-import LoginCard from "../components/LoginCard.js"
+import LoginCard from "./LoginCard"
 
 
 const LoginPage: React.FunctionComponent = () => {
