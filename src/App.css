@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
   margin: 0px;
@@ -13,6 +13,7 @@ body {
   height: 100%;
   font-size: 1.0em;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 110px;
 }
 
 a {
@@ -35,27 +36,41 @@ a:hover {
 h1 {
   padding-bottom: 20px;
   color: rgb(255, 255, 255);
-  font-size: 1.3em;
+  font-size: 1.4em;
   text-align: center;
 }
 
 h2 {
-  padding: 30px;
   color: #5e5e5e;
-  font-size: 1.0em;
-  
+  font-size: 1.2em;
 }
 
 h3 {
   color: #2d2d2d;
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin-bottom: 15px;
 }
 
 h4 {
   color: #727272;
-  font-size: 1.0em;
+  font-size: 1.3em;
   line-height: 160%;
 }
 
+.logo {
+  width: 190px;
+  color: #F2EEE7;
+  top: 10px;
+}
 
+.logo img {
+  width: 100%;
+}
+
+.show-white-space {
+  white-space: pre-wrap;
+}
+
+.AppBar {
+  z-index: 10;
+}
