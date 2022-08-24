@@ -1,7 +1,5 @@
 import ActivityCard from './ActivityCard'
-import { useEffect, useState } from 'react';
-import { baseURL } from '../config';
-import { ActivityItem } from '../api/activities.api.types';
+import { useEffect } from 'react';
 import { useAllActivities } from '../hooks/useAllActivities';
 
 
@@ -14,7 +12,9 @@ const Activity: React.FC = () => {
 
   return (
     <>
-      {allActivities.map((item) => <ActivityCard activityItem={item} />) }
+      {allActivities.map((item) =>
+        <ActivityCard activityItem={item} key={item.activity_id} />
+      )}
     </>
   );
 }

@@ -5,9 +5,11 @@ export type ApiResponse<T> = {
 };
 
 export interface ActivityItem {
+    activity_id: number,
     username: string,
     title: string,
     date: string,
     location: string,
-    description: string
+    description: string,
+    image: string,
 };

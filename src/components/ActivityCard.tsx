@@ -2,18 +2,18 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import defaultimg from './default.png'
-import { Button } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { getAllActivities } from '../api/activities.api';
-import { ActivityItem, ApiResponse } from '../api/activities.api.types';
-import { useEffect, useState } from 'react';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PlaceIcon from '@mui/icons-material/Place';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { Button, Divider } from '@mui/material';
+import { ActivityItem } from '../api/activities.api.types';
+import { Box } from '@mui/system';
+
 
 interface ActivityCardProps {
   activityItem: ActivityItem;
@@ -21,8 +21,9 @@ interface ActivityCardProps {
 
 export default function ActivityCard(props: ActivityCardProps) {
   const { activityItem } = props;
+
   return (
-    <Card sx={{ mb: '30px'}}>
+    <Card sx={{ width: '900px', ml: 'auto', mr: 'auto', mb: '30px'}}>
       <CardHeader
         avatar={
           <Avatar aria-label="activity">
@@ -33,34 +34,37 @@ export default function ActivityCard(props: ActivityCardProps) {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Activity title"
-        subheader="Date"
+        title={activityItem.username}
       />
       <CardMedia
         component="img"
-        height="290"
-        image={ defaultimg }
-        alt="activityalt"
+        height="390"
+        src={"assets/" + activityItem.image }
+        alt="activity image"
       />
       <CardContent>
-        <Typography component={'span'} variant="body2" color="text.secondary">
-          {activityItem.title}
+        <Typography component={'span'} color="text.secondary">
 
-        {/* <h2>Sted: { activity.location }</h2>
-        <h2>Deltakere: 0</h2>
-        <h2>Beskrivelse: { activity.description }</h2> */}
+          <Box sx={{ mb: '20px' }}>
+            <p><CalendarMonthIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Dato: { activityItem.date }</p>
+            <p><PlaceIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Sted: { activityItem.location }</p>
+            <p><PeopleAltIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Deltakere: 0</p>
 
-        {/* { activities.forEach((item) => item.description) } */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: '-60px', mb: '40px' }} >
+              <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}>
+                <PersonAddIcon sx={{ mr: '10px', verticalAlign: 'middle' }}/> Meld meg på
+              </Button>
+            </Box>
+          </Box>
 
+          <Divider />
+
+          <Box sx={{ mt: '30px', mb: '20px' }}>
+            <h2 className="show-white-space">{ activityItem.description }</h2>
+          </Box>
 
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}><PersonAddIcon sx={{ mr: '10px', ml: '-5px'}}/> Meld meg på</Button>
-        <IconButton aria-label="legg til favoritt">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 }
