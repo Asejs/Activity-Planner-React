@@ -1,45 +1,48 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import defaultimg from './default.png'
-import { Button } from '@mui/material';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PlaceIcon from '@mui/icons-material/Place';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { Button, Divider } from '@mui/material';
+import { ActivityItem } from '../api/activities.api.types';
+import { Box } from '@mui/system';
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
+
+interface ActivityCardProps {
+  activityItem: ActivityItem;
 }
 
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+const activityCardStyle = {
+  width: '900px',
+  ml: 'auto',
+  mr: 'auto',
+  mb: '30px'
+}
 
-export default function ActivityCard() {
-  const [expanded, setExpanded] = React.useState(false);
+const joinActivityButtonStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  mt: '-60px',
+  mb: '40px' 
+}
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+const iconAlignment = {
+  mr: '5px',
+  verticalAlign: 'middle'
+}
+
+export default function ActivityCard(props: ActivityCardProps) {
+  const { activityItem } = props;
 
   return (
-    <Card sx={{ mb: '30px'}}>
+    <Card sx={ activityCardStyle }>
       <CardHeader
         avatar={
           <Avatar aria-label="activity">
@@ -50,52 +53,37 @@ export default function ActivityCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Activity title"
-        subheader="Date"
+        title={activityItem.username}
       />
       <CardMedia
         component="img"
-        height="290"
-        image={ defaultimg }
-        alt="activityalt"
+        height="390"
+        src={`assets/${activityItem.image}`}
+        alt="activity image"
       />
       <CardContent>
-        <Typography component={'span'} variant="body2" color="text.secondary">
+        <Typography component={'span'} color="text.secondary">
 
-        <h2>Activity location</h2>
-        <h2>Activity description</h2>
-          
-        {/* { activities.map((activity: Activity) => (
-          <>
-            <h2>Sted: { activity.location }</h2>
-            <h2>Deltakere: 0</h2>
-            <h2>Beskrivelse: { activity.description }</h2>
-          </>
-        ))} */}
+          <Box sx={{ mb: '20px' }}>
+            <p><CalendarMonthIcon sx={ iconAlignment } /> Dato: { activityItem.date }</p>
+            <p><PlaceIcon sx={ iconAlignment } /> Sted: { activityItem.location }</p>
+            <p><PeopleAltIcon sx={ iconAlignment } /> Deltakere: 0</p>
+
+            <Box sx={ joinActivityButtonStyle } >
+              <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}>
+                <PersonAddIcon sx={ iconAlignment }/> Meld meg på
+              </Button>
+            </Box>
+          </Box>
+
+          <Divider />
+
+          <Box sx={{ mt: '30px', mb: '20px' }}>
+            <h2 className="show-white-space">{ activityItem.description }</h2>
+          </Box>
 
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}><PersonAddIcon sx={{ mr: '10px', ml: '-5px'}}/> Meld meg på</Button>
-        <IconButton aria-label="legg til favoritt">
-          <FavoriteIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography component={'span'} paragraph>
-            Ekstra informasjon / Beskrivelse
-          </Typography>
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }

@@ -11,9 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import logo from './logo.png'
 import { Link } from 'react-router-dom';
-
 
 
 const pages: { name: string; path: string }[] = [
@@ -25,7 +23,6 @@ const settings: { name: string; path: string }[] = [
     {name: 'Profil', path: '/'},
     {name: 'Registrer ny bruker', path: '/'},
     {name: 'Logg inn', path: '/login'},
-    {name: 'Logg ut', path: '/'}
 ];
 
 
@@ -49,7 +46,7 @@ const ResponsiveAppBar: React.FC = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#789778', mb: '30px'}}>
+    <AppBar position="absolute" sx={{ backgroundColor: '#789778' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
             {/* Nedtrekksmeny - vises bare når siden er xs */}
@@ -93,16 +90,12 @@ const ResponsiveAppBar: React.FC = () => {
                 </Menu>
             </Box>
 
-
-            {/* Logo */}
             <Box sx={{ flexGrow: 1 }}>
                 <Link to ="/">
-                    <img className="logo" src={ logo }/>
+                    <img className="logo" src="assets/logo.png" alt="Aktivitetsplanlegger"/>
                 </Link>
             </Box>
 
-
-            {/* Knapper i meny */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page, id) => (
                 <Link to ={page.path} key={id}>
@@ -114,8 +107,6 @@ const ResponsiveAppBar: React.FC = () => {
                 ))}
             </Box>
 
-
-            {/* Profil meny */}
             <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Profil">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -124,6 +115,7 @@ const ResponsiveAppBar: React.FC = () => {
                 </Tooltip>
                 
                 <Menu
+                disableScrollLock
                 sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
