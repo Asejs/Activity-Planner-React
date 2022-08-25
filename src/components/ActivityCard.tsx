@@ -19,11 +19,30 @@ interface ActivityCardProps {
   activityItem: ActivityItem;
 }
 
+const activityCardStyle = {
+  width: '900px',
+  ml: 'auto',
+  mr: 'auto',
+  mb: '30px'
+}
+
+const joinActivityButtonStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  mt: '-60px',
+  mb: '40px' 
+}
+
+const iconAlignment = {
+  mr: '5px',
+  verticalAlign: 'middle'
+}
+
 export default function ActivityCard(props: ActivityCardProps) {
   const { activityItem } = props;
 
   return (
-    <Card sx={{ width: '900px', ml: 'auto', mr: 'auto', mb: '30px'}}>
+    <Card sx={ activityCardStyle }>
       <CardHeader
         avatar={
           <Avatar aria-label="activity">
@@ -46,13 +65,13 @@ export default function ActivityCard(props: ActivityCardProps) {
         <Typography component={'span'} color="text.secondary">
 
           <Box sx={{ mb: '20px' }}>
-            <p><CalendarMonthIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Dato: { activityItem.date }</p>
-            <p><PlaceIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Sted: { activityItem.location }</p>
-            <p><PeopleAltIcon sx={{ mr: '10px', verticalAlign: 'middle' }} /> Deltakere: 0</p>
+            <p><CalendarMonthIcon sx={ iconAlignment } /> Dato: { activityItem.date }</p>
+            <p><PlaceIcon sx={ iconAlignment } /> Sted: { activityItem.location }</p>
+            <p><PeopleAltIcon sx={ iconAlignment } /> Deltakere: 0</p>
 
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: '-60px', mb: '40px' }} >
+            <Box sx={ joinActivityButtonStyle } >
               <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}>
-                <PersonAddIcon sx={{ mr: '10px', verticalAlign: 'middle' }}/> Meld meg på
+                <PersonAddIcon sx={ iconAlignment }/> Meld meg på
               </Button>
             </Box>
           </Box>

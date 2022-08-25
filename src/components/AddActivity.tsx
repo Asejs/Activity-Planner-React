@@ -14,12 +14,24 @@ export default function AddActivity() {
   const handleClick = () => {
     setIsShown(current => !current)
   }
+
+  const activityCardStyle = {
+    width: '900px',
+    ml: 'auto',
+    mr: 'auto',
+    mb: '30px'
+  }
+
+  const iconAlignment = {
+    mr: '5px',
+    verticalAlign: 'middle'
+  }
+  
   
   return (
     <>
       {isShown &&
-      (<Card sx={{ width: '900px', ml: 'auto', mr: 'auto', mb: '30px' }}>
-        
+      (<Card sx={ activityCardStyle }>
         <CardHeader
           action={
             <IconButton aria-label="settings" sx={{ '& svg': {fontSize: "40px"} }} onClick={handleClick}>
@@ -28,7 +40,7 @@ export default function AddActivity() {
           }
           title="Legg til ny aktivitet"
         />
-
+        
         <CardContent>
           <Typography component={'span'} variant="body2" color="text.secondary">
               <FormControl variant="standard">
@@ -88,7 +100,7 @@ export default function AddActivity() {
                       component="span"
                       sx={{ backgroundColor: 'darkgrey' }}
                     >
-                      <ImageIcon sx={{ mr: '10px', verticalAlign: 'middle' }} />
+                      <ImageIcon sx={ iconAlignment } />
                       Velg fil
                     </Button>
                   </label>
@@ -106,7 +118,7 @@ export default function AddActivity() {
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
                 <Button variant='contained' sx={{ backgroundColor: 'darkgrey' }}>
-                  <AddIcon sx={{ mr: '10px', mt: '1px', verticalAlign: 'middle' }}/>
+                  <AddIcon sx={ iconAlignment }/>
                   Legg til aktivitet
                 </Button>
               </Box>
