@@ -1,14 +1,9 @@
 import ActivityCard from './ActivityCard'
-import { useEffect } from 'react';
 import { useAllActivities } from '../hooks/useAllActivities';
 
 
 const Activity: React.FC = () => {
   const allActivities = useAllActivities().data;
-
-  useEffect(() => {
-    console.warn('allActivities', allActivities)
-  }, [allActivities])
 
   return (
     <>
@@ -20,4 +15,3 @@ const Activity: React.FC = () => {
 }
 
 export default Activity;
-
