@@ -7,9 +7,9 @@ const HomePage: React.FC = () => {
       <div className="homepage" style={{ overflow: 'hidden' }} />
 
       <div className="home_description">
-          Velkommen til<br />
-          <img src="assets/logo.png" alt="logo"/><br />
-          Logg inn for å melde deg på aktiviteter!
+          <p>Velkommen til</p>
+          <img src="assets/logo.png" alt="logo"/>
+          <p>Logg inn for å melde deg på aktiviteter!</p>
       </div>
     </>
   )
