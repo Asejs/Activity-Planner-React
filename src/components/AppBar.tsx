@@ -115,7 +115,7 @@ const ResponsiveAppBar: React.FC = () => {
                 </Tooltip>
                 
                 <Menu
-                disableScrollLock={true}
+                disableScrollLock
                 sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
