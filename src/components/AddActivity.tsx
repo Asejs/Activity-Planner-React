@@ -81,7 +81,6 @@ export default function AddActivity() {
                   <input type="file"
                     id="fileUploadButton"
                     style={{ display: 'none' }}
-                    // onChange={onFileChange}
                   />
                   <label htmlFor={'fileUploadButton'}>
                     <Button
