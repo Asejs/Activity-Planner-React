@@ -39,7 +39,7 @@ export default function ActivityCard(props: ActivityCardProps) {
       <CardMedia
         component="img"
         height="390"
-        src={"assets/" + activityItem.image }
+        src={`assets/${activityItem.image}`}
         alt="activity image"
       />
       <CardContent>
