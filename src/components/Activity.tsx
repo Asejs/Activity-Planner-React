@@ -1,15 +1,22 @@
 import ActivityCard from './ActivityCard'
 import { useAllActivities } from '../hooks/useAllActivities';
+import { CircularProgress } from '@mui/material';
 
 
 const Activity: React.FC = () => {
-  const allActivities = useAllActivities().data;
+  const { apiResponse: allActivities } = useAllActivities();
+  const { isLoading } = useAllActivities();
+  const loadingStyle = {
+    display: 'flex',
+    mr: 'auto',
+    ml: 'auto' 
+  }
 
   return (
     <>
-      {allActivities.map((item) =>
-        <ActivityCard activityItem={item} key={item.activity_id} />
-      )}
+      { isLoading ?
+        <CircularProgress color="success" sx={ loadingStyle }/>
+        : allActivities.data.map((item) => <ActivityCard activityItem={item} key={item.activity_id} /> ) }
     </>
   );
 }
