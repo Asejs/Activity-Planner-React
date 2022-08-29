@@ -4,7 +4,7 @@ import { getAllActivities } from "../api/activities.api";
 
 export function useAllActivities() {
     const [apiResponse, setApiResponse] = useState({ data: [] as ActivityItem[], error: undefined});
-    const [loading, setLoading] = useState<boolean>(false);
+    const [isLoading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         setLoading(true);
@@ -16,5 +16,5 @@ export function useAllActivities() {
         setTimeout( () => { fetchAPI(); }, 2000)
     }, []);
 
-    return { apiResponse, loading };
+    return { apiResponse, isLoading };
 }
