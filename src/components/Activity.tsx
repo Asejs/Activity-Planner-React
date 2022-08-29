@@ -4,9 +4,8 @@ import { CircularProgress } from '@mui/material';
 
 
 const Activity: React.FC = () => {
-  const allActivities = useAllActivities().apiResponse.data;
-  const loading = useAllActivities().loading;
-  console.log(loading)
+  const { apiResponse: allActivities } = useAllActivities();
+  const { isLoading } = useAllActivities();
 
   const loadingStyle = {
     display: 'flex',
@@ -16,9 +15,9 @@ const Activity: React.FC = () => {
 
   return (
     <>
-      { loading || allActivities === undefined ?
+      { isLoading ?
         <CircularProgress color="success" sx={ loadingStyle }/>
-        : allActivities.map((item) => <ActivityCard activityItem={item} key={item.activity_id} /> ) }
+        : allActivities.data.map((item) => <ActivityCard activityItem={item} key={item.activity_id} /> ) }
     </>
   );
 }
