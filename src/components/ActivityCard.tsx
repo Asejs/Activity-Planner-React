@@ -19,10 +19,8 @@ interface ActivityCardProps {
   activityItem: ActivityItem;
 }
 
-const activityCardStyle = {
-  width: '900px',
-  ml: 'auto',
-  mr: 'auto',
+const cardStyle = {
+  mt: '30px',
   mb: '30px'
 }
 
@@ -42,7 +40,7 @@ export default function ActivityCard(props: ActivityCardProps) {
   const { activityItem } = props;
 
   return (
-    <Card sx={ activityCardStyle }>
+    <Card sx={ cardStyle }>
       <CardHeader
         avatar={
           <Avatar aria-label="activity">
