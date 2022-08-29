@@ -8,30 +8,28 @@ import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import ImageIcon from '@mui/icons-material/Image';
 
+
+const cardStyle = {
+  mt: '30px',
+  mb: '30px'
+}
+
+const iconAlignment = {
+  mr: '5px',
+  verticalAlign: 'middle'
+}
+
 export default function AddActivity() {
   const [isShown, setIsShown] = useState(true);
 
   const handleClick = () => {
     setIsShown(current => !current)
   }
-
-  const activityCardStyle = {
-    width: '900px',
-    ml: 'auto',
-    mr: 'auto',
-    mb: '30px'
-  }
-
-  const iconAlignment = {
-    mr: '5px',
-    verticalAlign: 'middle'
-  }
-  
   
   return (
     <>
       {isShown &&
-      (<Card sx={ activityCardStyle }>
+      (<Card sx={ cardStyle }>
         <CardHeader
           action={
             <IconButton aria-label="settings" sx={{ '& svg': {fontSize: "40px"} }} onClick={handleClick}>
