@@ -1,24 +1,35 @@
 ﻿import { Container } from '@mui/material';
 import { useState } from 'react';
-import Activity from '../../components/Activity';
-import AddActivity from '../../components/AddActivity';
-
-const cardStyle = {
-    width: '900px',
-    ml: 'auto',
-    mr: 'auto',
-    mb: '30px'
-}
+import ActivityButton from '../../components/ActivityButton';
+import Activity from './Activity';
+import AddActivity from './AddActivity';
+import { containerStyle, iconAlignment } from '../../muiStyles';
+import AddIcon from '@mui/icons-material/Add';
 
 const ActivitiesPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+    const [showAddActivity, setShowAddActivity] = useState<boolean>(false);
 
+    const handleClick = () => {
+        setShowAddActivity(current => !current)
+    }
     return (
         <>
-            <Container sx={cardStyle}>
+            <Container sx={containerStyle}>
                 <h1>Utforsk aktiviteter</h1>
+
                 {isLoggedIn &&
-                <AddActivity />}
+                (<>
+                    <ActivityButton handleClick={handleClick}>
+                        <AddIcon sx={ iconAlignment }/>
+                        Legg til ny aktivitet
+                    </ActivityButton>
+
+                    {showAddActivity &&
+                    <AddActivity handleClick={handleClick} showAddActivity={showAddActivity} />}
+                    
+                </>)}
+
                 <Activity />
             </Container>
         </>
