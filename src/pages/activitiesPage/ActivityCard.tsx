@@ -11,29 +11,12 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PlaceIcon from '@mui/icons-material/Place';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Button, Divider } from '@mui/material';
-import { ActivityItem } from '../api/activities.api.types';
+import { ActivityItem } from '../../api/activities.api.types';
 import { Box } from '@mui/system';
-
+import { cardStyle, iconAlignment, joinActivityButtonStyle } from '../../muiStyles'
 
 interface ActivityCardProps {
   activityItem: ActivityItem;
-}
-
-const cardStyle = {
-  mt: '30px',
-  mb: '30px'
-}
-
-const joinActivityButtonStyle = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  mt: '-60px',
-  mb: '40px' 
-}
-
-const iconAlignment = {
-  mr: '5px',
-  verticalAlign: 'middle'
 }
 
 export default function ActivityCard(props: ActivityCardProps) {
@@ -68,7 +51,7 @@ export default function ActivityCard(props: ActivityCardProps) {
             <p><PeopleAltIcon sx={ iconAlignment } /> Deltakere: 0</p>
 
             <Box sx={ joinActivityButtonStyle } >
-              <Button variant="contained" sx={{ backgroundColor: 'darkgrey'}}>
+              <Button variant="contained">
                 <PersonAddIcon sx={ iconAlignment }/> Meld meg på
               </Button>
             </Box>
