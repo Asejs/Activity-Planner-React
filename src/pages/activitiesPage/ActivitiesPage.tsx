@@ -10,8 +10,8 @@ const ActivitiesPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
     const [showAddActivity, setShowAddActivity] = useState<boolean>(false);
 
-    const handleClick = () => {
-        setShowAddActivity(current => !current)
+    const onClick = () => {
+        setShowAddActivity(!showAddActivity)
     }
     return (
         <>
@@ -20,13 +20,13 @@ const ActivitiesPage = () => {
 
                 {isLoggedIn &&
                 (<>
-                    <ActivityButton handleClick={handleClick}>
+                    <ActivityButton color={'secondary'} onClick={onClick}>
                         <AddIcon sx={ iconAlignment }/>
                         Legg til ny aktivitet
                     </ActivityButton>
 
                     {showAddActivity &&
-                    <AddActivity handleClick={handleClick} showAddActivity={showAddActivity} />}
+                    <AddActivity onClick={onClick} showAddActivity={showAddActivity} />}
                     
                 </>)}
 
