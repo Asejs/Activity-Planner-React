@@ -1,13 +1,12 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Box, FormControl, TextField } from '@mui/material';
-import { Button } from 'reactstrap';
-
+import { Box, Button, FormControl, TextField } from '@mui/material';
+import { loginCardStyle, formStyle, BoxStyle } from '../../muiStyles';
 
 export default function LoginCard() {
     return (
-        <Card sx={{ width: '900px', ml: 'auto', mr: 'auto', mb: '30px' }}>
+        <Card sx={ loginCardStyle }>
 
         <CardContent>
             <Typography component={'span'} variant="body2" color="text.secondary">
@@ -15,7 +14,7 @@ export default function LoginCard() {
                     <h2>Logg inn</h2>
 
                     <FormControl variant="standard">
-                        <Box sx={{'& .MuiTextField-root': { m: 1, width: '100%' }}}>
+                        <Box sx={ formStyle }>
                         <div>
                             <form>
                                 <label htmlFor="username">Brukernavn:</label>
@@ -40,7 +39,7 @@ export default function LoginCard() {
                         </Box>
                     </FormControl>
 
-                    <Box sx={{ m: 1, mt: 2, width: '100%' }}>
+                    <Box sx={ BoxStyle }>
                         Har du ikke en bruker?<br />
                         <span className="line">
                             {/*put router link here*/}

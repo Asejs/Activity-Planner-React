@@ -31,3 +31,23 @@ export const loadingStyle = {
   mr: 'auto',
   ml: 'auto' 
 }
+
+export const loginCardStyle = {
+    width: '700px',
+    ml: 'auto',
+    mr: 'auto',
+    mb: '30px'
+}
+
+export const formStyle = {
+    '& .MuiTextField-root': {
+        m: 1,
+        width: '100%'
+    }
+}
+
+export const BoxStyle = {
+    m: 1,
+    mt: 2,
+    width: '100%'
+}
