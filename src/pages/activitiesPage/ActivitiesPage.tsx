@@ -1,17 +1,18 @@
-﻿import { Container } from '@mui/material';
+﻿import { Button, Container } from '@mui/material';
 import { useState } from 'react';
 import ActivityButton from '../../components/ActivityButton';
 import Activity from './Activity';
-import AddActivity from './AddActivity';
+import AddActivityForm from './AddActivityForm';
 import { containerStyle, iconAlignment } from '../../muiStyles';
 import AddIcon from '@mui/icons-material/Add';
+import AddActivityButton from './AddActivityButton';
 
 const ActivitiesPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
-    const [showAddActivity, setShowAddActivity] = useState<boolean>(false);
+    const [showAddActivityForm, setShowAddActivityForm] = useState<boolean>(false);
 
     const onClick = () => {
-        setShowAddActivity(!showAddActivity)
+        setShowAddActivityForm(!showAddActivityForm)
     }
     return (
         <>
@@ -20,13 +21,9 @@ const ActivitiesPage = () => {
 
                 {isLoggedIn &&
                 (<>
-                    <ActivityButton color={'secondary'} onClick={onClick}>
-                        <AddIcon sx={ iconAlignment }/>
-                        Legg til ny aktivitet
-                    </ActivityButton>
-
-                    {showAddActivity &&
-                    <AddActivity onClick={onClick} showAddActivity={showAddActivity} />}
+                    <AddActivityButton onClick={onClick} />
+                    {showAddActivityForm &&
+                    <AddActivityForm onClick={onClick} showAddActivityForm={showAddActivityForm} />}
                     
                 </>)}
 
