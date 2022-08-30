@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import ActivityButton from '../../components/ActivityButton';
 import Activity from './Activity';
-import AddActivityForm from './AddActivityForm';
 import { containerStyle, iconAlignment } from '../../muiStyles';
 import AddIcon from '@mui/icons-material/Add';
 import AddActivityButton from './AddActivityButton';
+import AddActivityForm from './AddActivityForm';
 
 const ActivitiesPage = () => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
