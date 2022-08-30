@@ -9,7 +9,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import { cardStyle, iconAlignment, iconLargerSize  } from '../../muiStyles';
 
 type AddActivityProps = {
-  handleClick?: () => void;
+  onClick: () => void;
   showAddActivity: boolean;
 }
 
@@ -20,7 +20,7 @@ export default function AddActivity(props: AddActivityProps) {
       (<Card sx={ cardStyle }>
         <CardHeader
           action={
-            <IconButton aria-label="settings" sx={ iconLargerSize } onClick={props.handleClick}>
+            <IconButton aria-label="settings" sx={ iconLargerSize } onClick={props.onClick}>
               <CloseIcon />
             </IconButton>
           }
