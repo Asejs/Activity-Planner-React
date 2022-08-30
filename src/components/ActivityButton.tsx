@@ -2,17 +2,16 @@ import { Button } from '@mui/material';
 
 type ActivityButtonProps = {
     color?: "inherit" | "primary" | "secondary";
-    handleClick?: () => void;
+    onClick: () => void;
     children?: React.ReactNode
 }
 
-const ActivityButton = (props: ActivityButtonProps): JSX.Element => {
+const ActivityButton = ({color, onClick, children}: ActivityButtonProps): JSX.Element => {
     return (
-        <Button color={props.color} variant='contained' onClick={props.handleClick}>
-            {props.children}
+        <Button color={color} variant='contained' onClick={onClick}>
+            {children}
         </Button>
     )
 }
 
 export default ActivityButton;
-
