@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -7,32 +6,21 @@ import { Box, Button, FormControl, Grid, IconButton, TextField } from '@mui/mate
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import ImageIcon from '@mui/icons-material/Image';
+import { cardStyle, iconAlignment, iconLargerSize  } from '../../muiStyles';
 
-
-const cardStyle = {
-  mt: '30px',
-  mb: '30px'
+type AddActivityFormProps = {
+  onClick: () => void;
+  showAddActivityForm: boolean;
 }
 
-const iconAlignment = {
-  mr: '5px',
-  verticalAlign: 'middle'
-}
-
-export default function AddActivity() {
-  const [isShown, setIsShown] = useState(true);
-
-  const handleClick = () => {
-    setIsShown(current => !current)
-  }
-  
+export default function AddActivityForm({onClick, showAddActivityForm}: AddActivityFormProps) {
   return (
     <>
-      {isShown &&
+      {showAddActivityForm &&
       (<Card sx={ cardStyle }>
         <CardHeader
           action={
-            <IconButton aria-label="settings" sx={{ '& svg': {fontSize: "40px"} }} onClick={handleClick}>
+            <IconButton aria-label="settings" sx={ iconLargerSize } onClick={onClick}>
               <CloseIcon />
             </IconButton>
           }
@@ -96,7 +84,6 @@ export default function AddActivity() {
                     <Button
                       variant="contained"
                       component="span"
-                      sx={{ backgroundColor: 'darkgrey' }}
                     >
                       <ImageIcon sx={ iconAlignment } />
                       Velg fil
@@ -115,7 +102,7 @@ export default function AddActivity() {
               </Grid>
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-                <Button variant='contained' sx={{ backgroundColor: 'darkgrey' }}>
+                <Button variant='contained'>
                   <AddIcon sx={ iconAlignment }/>
                   Legg til aktivitet
                 </Button>

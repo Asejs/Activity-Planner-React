@@ -1,12 +1,7 @@
 import ActivityCard from './ActivityCard'
-import { useAllActivities } from '../hooks/useAllActivities';
+import { useAllActivities } from '../../hooks/useAllActivities';
 import { CircularProgress } from '@mui/material';
-
-const loadingStyle = {
-  display: 'flex',
-  mr: 'auto',
-  ml: 'auto' 
-}
+import { loadingStyle } from '../../muiStyles'
 
 const Activity: React.FC = () => {
   const { apiResponse: allActivities, isLoading } = useAllActivities();

@@ -34,7 +34,7 @@ export default function LoginCard() {
                                     type="password"
                                     required
                                 />
-                                <Button variant='contained' sx={{ backgroundColor: 'darkgrey' }}>Logg inn</Button>
+                                <Button variant='contained'>Logg inn</Button>
                             </form>
                         </div>
                         </Box>
